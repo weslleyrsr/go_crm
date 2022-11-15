@@ -6,6 +6,7 @@
 # Local setup
 - Install dependencies if needed
 - Run `go run main.go` to start the server
+- Postman collection provided inside the root directory
 
 # Endpoints
 - GET `/`

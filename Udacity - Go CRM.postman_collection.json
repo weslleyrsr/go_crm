@@ -1,0 +1,293 @@
+{
+	"info": {
+		"_postman_id": "a82c0fc7-a79c-4359-980b-fbfacd10bce7",
+		"name": "Udacity - Go CRM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8429918"
+	},
+	"item": [
+		{
+			"name": "Fetch customers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body has the expected model\", function () {\r",
+							"    var response = JSON.parse(responseBody);\r",
+							"    pm.expect(response).to.be.an('object')\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/customers",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch specific customer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body has the expected model\", function () {\r",
+							"    var response = JSON.parse(responseBody);\r",
+							"    pm.expect(response).to.be.an('object')\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/customer/0",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"customer",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update customer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body has the expected model\", function () {\r",
+							"    var response = JSON.parse(responseBody);\r",
+							"    pm.expect(response[\"1\"].name).to.eql(\"Weslley Rodrigo\");\r",
+							"    pm.expect(response[\"1\"].role).to.eql(\"Software Engineer\");\r",
+							"    pm.expect(response[\"1\"].email).to.eql(\"random@email.com\");\r",
+							"    pm.expect(response[\"1\"].phone).to.eql(\"+55 (00) 99999-9999\");\r",
+							"    pm.expect(response[\"1\"].contacted).to.eql(true);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Weslley Rodrigo\",\r\n    \"role\": \"Software Engineer\",\r\n    \"email\": \"random@email.com\",\r\n    \"phone\": \"+55 (00) 99999-9999\",\r\n    \"contacted\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/customer/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"customer",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete customer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body has the expected model\", function () {\r",
+							"    var response = JSON.parse(responseBody);\r",
+							"    pm.expect(response).to.be.an('object')\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/customer/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"customer",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create customers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body has the expected model\", function () {\r",
+							"    var response = JSON.parse(responseBody);\r",
+							"    pm.expect(response).to.be.an('object')\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"name\": \"Customer From API\",\r\n        \"role\": \"student\",\r\n        \"email\": \"random@email.com\",\r\n        \"phone\": \"+55 (00) 99999-9999\",\r\n        \"contacted\": false\r\n    },\r\n    {\r\n        \"name\": \"Another customer From API\",\r\n        \"role\": \"student\",\r\n        \"email\": \"random@email.com\",\r\n        \"phone\": \"+55 (00) 99999-9999\",\r\n        \"contacted\": false\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/customers",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create customer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body has the expected model\", function () {\r",
+							"    var response = JSON.parse(responseBody);\r",
+							"    pm.expect(response).to.be.an('object')\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Dani\",\r\n    \"role\": \"Software Engineer\",\r\n    \"email\": \"random@email.com\",\r\n    \"phone\": \"+55 (00) 99999-9999\",\r\n    \"contacted\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/customer",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"customer"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
