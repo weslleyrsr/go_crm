@@ -8,6 +8,7 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/segmentio/ksuid"
 	"strconv"
+	"io/ioutil"
 )
 
 var customers = make(map[string]customersModels.Customer)
@@ -38,6 +39,7 @@ func GetCostumer(res http.ResponseWriter, req *http.Request) {
 		json.NewEncoder(res).Encode(customers[id])
 	} else {
 		res.WriteHeader(http.StatusNotFound)
+		json.NewEncoder(res).Encode("Not found")
 	}
 }
 
@@ -46,11 +48,14 @@ func AddCustomer(res http.ResponseWriter, req *http.Request) {
 
 	var customer customersModels.Customer
 
-	err := json.NewDecoder(req.Body).Decode(&customer)
-    if err != nil {
-        http.Error(res, err.Error(), http.StatusBadRequest)
-        return
-    }
+	reqBody, _ := ioutil.ReadAll(req.Body)
+	json.Unmarshal(reqBody, &customer)
+
+	// err := json.NewDecoder(req.Body).Decode(&customer)
+    // if err != nil {
+    //     http.Error(res, err.Error(), http.StatusBadRequest)
+    //     return
+    // }
 
 	saveCustomer(customer, "")
 
@@ -63,11 +68,14 @@ func AddCustomers(res http.ResponseWriter, req *http.Request) {
 
 	var customersList []customersModels.Customer
 
-	err := json.NewDecoder(req.Body).Decode(&customersList)
-    if err != nil {
-        http.Error(res, err.Error(), http.StatusBadRequest)
-        return
-    }
+	reqBody, _ := ioutil.ReadAll(req.Body)
+	json.Unmarshal(reqBody, &customersList)
+
+	// err := json.NewDecoder(req.Body).Decode(&customersList)
+    // if err != nil {
+    //     http.Error(res, err.Error(), http.StatusBadRequest)
+    //     return
+    // }
 
 	saveCustomers(customersList)
 
@@ -83,11 +91,14 @@ func UpdateCostumer(res http.ResponseWriter, req *http.Request) {
 
 	var customer customersModels.Customer
 
-	err := json.NewDecoder(req.Body).Decode(&customer)
-    if err != nil {
-        http.Error(res, err.Error(), http.StatusBadRequest)
-        return
-    }
+	reqBody, _ := ioutil.ReadAll(req.Body)
+	json.Unmarshal(reqBody, &customer)
+
+	// err := json.NewDecoder(req.Body).Decode(&customer)
+    // if err != nil {
+    //     http.Error(res, err.Error(), http.StatusBadRequest)
+    //     return
+    // }
 
 	customers[id] = customer
 

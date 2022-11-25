@@ -1,3 +1,6 @@
+# About
+This project was created for a Udacity course, this CRM could be re-used within any app that need to manage users, like an e-commerce or just to store user preferences.
+
 # Dependencies
 - github.com/segmentio/ksuid
 - github.com/gorilla/mux
